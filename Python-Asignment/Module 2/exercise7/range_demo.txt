@@ -1,0 +1,22 @@
+Answers:
+1. for x in range(6):
+          print('I love program!')
+2. Output
+    2
+    3
+    4
+    5
+3. Output
+    10
+     9
+     8
+     7
+     6
+4. Output
+    0
+    100
+    200
+    300
+    400
+    500 
+     

@@ -1,0 +1,22 @@
+Expression: 
+a=4*3/4+4/4+8-2+5/8	
+
+Steps:
+1)  Precedence of * and / are same and  left to right associativity is followed.
+a=4*3/4+4/4+8-2+5/8
+a=12/4+4/4+8-2+5/8
+
+2) / has higher precedence than + and -
+a=3.0+4/4+8-2+5/8
+a=3.0+1.0+8-2+5/8
+a=3.0+1.0+8-2+0.625
+
+3) + and - have same precedence and left to right asociativity is followed
+a=3.0+1.0+8-2+0.625
+a=4.0+8-2+0.625
+a=12.0-2+0.625
+a=10.0+0.625
+a=10.625
+
+Answer:
+a=10.625

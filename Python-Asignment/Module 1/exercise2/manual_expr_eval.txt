@@ -1,0 +1,51 @@
+Expression 1: 
+result=5*b*b*x-3*a*y*y-8*b*b*x+10*a*y
+Given: a=4, b=2, x=5, y=4
+
+Steps:
+result=5*2*2*5-3*4*4*4-8*2*2*5+10*4*4
+
+1) * has more predence  than + and -
+result=100-192-160+160
+
+2) left to right associativity
+result=-92-160+160
+result=-252+160
+result=-92
+
+Answer:
+result=-92
+
+Expression 2:
+calc=4*a*y/c-a*y/c
+Given: a=2, y=3, c=7
+
+Steps:
+calc=4*2*3/7-2*3/7
+1) * and / have same precedence and left to right associativity is followed
+calc=8*3/7-2*3/7
+calc=24/7-2*3/7
+calc=3.428571-6/7
+calc=3.428571-0.857142
+calc=2.57142899
+
+Answer:
+calc=2.57142899
+
+Expression 3:
+ans=c+a*y*y/b
+Given: a=4.4, b=0.0,c=4.2,y=3.0
+
+Steps:
+ans=4.2+4.4*3.0*3.0/0.0
+
+1) * and / have same precedence but higher precedence than + 
+   left to right associativity is followed
+ans=4.2+13.2*3.0/0.0
+ans=4.2+39.6/0.0
+
+2) Division by zero is not defined!
+This evaluation is not possible.
+
+Answer:
+ans=Not defined
