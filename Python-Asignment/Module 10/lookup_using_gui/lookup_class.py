@@ -26,8 +26,8 @@ class Contact:
 
 
 
-o=open('contact.txt','rb')
-b=pickle.load(o)
+o=open('contact.txt','rb')              
+b=pickle.load(o)                                        #load existing file
 o.close()
 m=1
 for i in b:
@@ -35,21 +35,22 @@ for i in b:
        m=i
 q_=m
 i=0
-print(b)
+print(b)                                                #print existing files data on console
 def value(l,name,phone,email):
     global q_
     global b
-    a=Contact((name.get()),(phone.get()),(email.get()))
+    a=Contact((name.get()),(phone.get()),(email.get()))         #to get the values from text fields creating new object
     b[q_]=a
     q_+=1
     s="record num"+str(q_)+(name.get())+str((phone.get()))+(email.get())
-    print(s)
+    print(s)                                            #print the values entered by user on console
     return
     
 def NewRec():
     n = tk.StringVar()  
     p = tk.IntVar()  
     e=tk.StringVar()  
+    #giving fields to enter data
     labelNum1 = tk.Label(window, text="Enter name").grid(row=7)
     name = tk.Entry(window, textvariable=n).grid(row=8)
     labelNum2 = tk.Label(window, text="Enter phone").grid(row=9)
@@ -62,8 +63,8 @@ def NewRec():
 
 
 def update(i,n,p,e):
-   c=b[(i.get())]
-   c.set_email((e.get()))
+   c=b[(i.get())]                   #calling object of that record
+   c.set_email((e.get()))          #and updatinng using setter methods
    c.set_phone((p.get()))
    c.set_name((n.get()))
    print(c.__str__())
@@ -73,6 +74,7 @@ def UpdateRec():
     p = tk.IntVar()  
     i= tk.IntVar()  
     e=tk.StringVar()  
+    #giving fields to enter data
     l0= tk.Label(window, text="Enter RECORD number").grid(row=7,column=10)
     name = tk.Entry(window, textvariable=i).grid(row=8,column=10)
     labelNum1 = tk.Label(window, text="Enter name").grid(row=9,column=10)
@@ -90,54 +92,53 @@ def ViewAllRec():
     #tk.Label(window,text=b[0].__str__).pack()
     global b
     global i
-    for d in b:
+    for d in b:                                             #iterate in dictionary to show all data
         a=b[d].__str__()
         tk.Label(window,text=a).grid(row=14+i)
         i+=1
 def show(i):
     a=(i.get())
-    a=b[(i.get())].__str__()
+    a=b[(i.get())].__str__()                                    #i stores the record number
     tk.Label(window,text=a).grid(row=17,column=1000)
     
 def ViewRec():
     global b
     i= tk.IntVar()  
-    l0= tk.Label(window, text="Enter RECORD number").grid(row=7,column=1000)
+    l0= tk.Label(window, text="Enter RECORD number").grid(row=7,column=1000)        #using record number as key
     recs = tk.Entry(window, textvariable=i).grid(row=8,column=1000)
     u= partial(show,i)  
     save = tk.Button(window, text="View", command=u).grid(row=20,column=1000)
     
 def delet(i):
     a=(i.get())
-    del b[(i.get())]
+    del b[(i.get())]                #record number with i will be deleted
     
 def DeleteRec():
     global b
     i= tk.IntVar()  
-    l0= tk.Label(window, text="Enter RECORD number").grid(row=7,column=2000)
+    l0= tk.Label(window, text="Enter RECORD number").grid(row=7,column=2000)            #using record number to delete data
     recs = tk.Entry(window, textvariable=i).grid(row=8,column=2000)
     u= partial(delet,i)  
     save = tk.Button(window, text="Delete", command=u).grid(row=20,column=2000)
 def DeleteAllRec():
     global b
     del b
-    b={}
-
+    b={}                            #after deleting all data making dictionary empty
+#to show all the buttons on the gui
 r = partial(NewRec)
-tk.Button(window,text="Enter new record",command=r).grid(row=0)
+tk.Button(window,text="Enter new record",command=r).grid(row=0,column=0)
 s = partial(UpdateRec)
-tk.Button(window,text="Update record",command=s).grid(row=1)  
+tk.Button(window,text="Update record",command=s).grid(row=0,column=100)  
 t = partial(ViewAllRec)  
-tk.Button(window,text="View all records",command=t).grid(row=2)   
+tk.Button(window,text="View all records",command=t).grid(row=0,column=200)   
 u = partial(ViewRec)  
-tk.Button(window,text="View a record",command=u).grid(row=3)
+tk.Button(window,text="View a record",command=u).grid(row=0,column=300)
 v = partial(DeleteRec)  
-tk.Button(window,text="Delete a record",command=v).grid(row=4)  
+tk.Button(window,text="Delete a record",command=v).grid(row=0,column=400)  
 w= partial(DeleteAllRec)  
-tk.Button(window,text="Delete all records",command=w).grid(row=5) 
+tk.Button(window,text="Delete all records",command=w).grid(row=0,column=600) 
 print()
 o=open('contact.txt ','wb')
-pickle.dump(b,o)
+pickle.dump(b,o)                                    #UPDATE the data in file
 o.close()
-
 window.mainloop()
